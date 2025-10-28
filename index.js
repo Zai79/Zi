@@ -162,7 +162,6 @@ client.on('guildMemberAdd', async (member) => {
     const channel = member.guild.channels.cache.get(CHANNEL_ID);
     if (!channel) return;
 
-    // نختار ترحيب عشوائي من بين خيارين
     const welcomes = [
       `منور السيرفر يا <@${member.id}> ✨، بس النور نوري 😎`,
       `منور السيرفر يا <@${member.id}> 💀، الحين زاد عدد الفشلة 🤣`
