@@ -134,5 +134,46 @@ async function checkModeration(text) {
 const app = express();
 app.get("/", (req, res) => res.send("Miko bot is alive!"));
 app.listen(process.env.PORT || 3000, () => console.log("Web server running"));
+client.once('ready', () => {
+  console.log(`${BOT_NAME} ready!`);
+});
+
+// ========== ترحيب تلقائي ==========
+client.on('guildMemberAdd', async (member) => {
+  try {
+    const channel = member.guild.channels.cache.get(CHANNEL_ID);
+    if (!channel) return;
+
+    const welcomes = [
+      `منور السيرفر يا <@${member.id}> ✨، بس النور نوري 😎`,
+      `منور السيرفر يا <@${member.id}> 💀، الحين زاد عدد الفشلة 🤣`
+    ];
+
+    const randomMsg = welcomes[Math.floor(Math.random() * welcomes.length)];
+    await channel.send(randomMsg);
+
+  } catch (err) {
+    console.error('خطأ في الترحيب:', err);
+  }
+});
+// ========== ترحيب تلقائي ==========
+client.on('guildMemberAdd', async (member) => {
+  try {
+    const channel = member.guild.channels.cache.get(CHANNEL_ID);
+    if (!channel) return;
+
+    // نختار ترحيب عشوائي من بين خيارين
+    const welcomes = [
+      `منور السيرفر يا <@${member.id}> ✨، بس النور نوري 😎`,
+      `منور السيرفر يا <@${member.id}> 💀، الحين زاد عدد الفشلة 🤣`
+    ];
+
+    const randomMsg = welcomes[Math.floor(Math.random() * welcomes.length)];
+    await channel.send(randomMsg);
+
+  } catch (err) {
+    console.error('خطأ في الترحيب:', err);
+  }
+});
 
 client.login(DISCORD_TOKEN);
