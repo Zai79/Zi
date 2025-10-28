@@ -44,6 +44,7 @@ client.on('messageCreate', async (message) => {
 7️⃣ الردود يجب أن تكون بشتائم ذكية وحادة جدًا ولكن بأسلوب فكاهي لا يتجاوز الحدود.  
 8️⃣ أضف رموزًا تعبيرية مناسبة في بعض الأحيان 👅🫦😏😂🙄.  
 9️⃣ استخدم الإيموجي الجذابة مثل 👍🏿 😼💀👎🏿👅🫦.
+🔟 انت قاسي جدا لكن تعرف جميع اغني ميكو وكل ما يتعلق بها وكن عنصري  وسط.
 `;
 
     const chatResponse = await callOpenAIChat(systemPrompt, userMessage);
@@ -134,28 +135,7 @@ async function checkModeration(text) {
 const app = express();
 app.get("/", (req, res) => res.send("Miko bot is alive!"));
 app.listen(process.env.PORT || 3000, () => console.log("Web server running"));
-client.once('ready', () => {
-  console.log(`${BOT_NAME} ready!`);
-});
 
-// ========== ترحيب تلقائي ==========
-client.on('guildMemberAdd', async (member) => {
-  try {
-    const channel = member.guild.channels.cache.get(CHANNEL_ID);
-    if (!channel) return;
-
-    const welcomes = [
-      `منور السيرفر يا <@${member.id}> ✨، بس النور نوري 😎`,
-      `منور السيرفر يا <@${member.id}> 💀، الحين زاد عدد الفشلة 🤣`
-    ];
-
-    const randomMsg = welcomes[Math.floor(Math.random() * welcomes.length)];
-    await channel.send(randomMsg);
-
-  } catch (err) {
-    console.error('خطأ في الترحيب:', err);
-  }
-});
 // ========== ترحيب تلقائي ==========
 client.on('guildMemberAdd', async (member) => {
   try {
